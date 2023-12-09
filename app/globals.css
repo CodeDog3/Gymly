@@ -2,26 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body,
+:root{
+  height: 100%;
+  box-sizing: border-box;
+  /* background-color: rgb(21, 211, 186); */
+}
+body{
+  height:200%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+:root{
+  --first: #fa5560;
+  --second: #b14bf4;
+  --third: #4d91ff;
+}
+
+.linearbg{
+  background-size: 200% auto!important;
+  background-image: linear-gradient(81.02deg, var(--first) -53.47%, var(--second) 25.52%, var(--third) 64.8%)!important;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  .transbg{
+  background-color: var(--first);
+  background-image: linear-gradient(81.02deg, var(--first) -53.47%, var(--second) 25.52%, var(--third) 64.8%)!important;
+  background-size: 100%;
+  background-repeat: repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  }
+  .transbg2{
+    background-color: var(--first);
+    background-image: linear-gradient(81.02deg, var(--third) -53.47%, var(--second) 25.52%, var(--first) 64.8%)!important;
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    }
+
+    .bg{
+      background-image: url('../public/bg.webp');
+      background-color: black;
+    }
+    .bg-blur{
+      
+      border-radius: 16rem; 
+      background: radial-gradient(110.88% 79.69% at 47.77% 151.82%, #FFEC45 0%, rgba(255, 236, 69, 0.3) 54.92%, rgba(255, 236, 69, 0) 96.11%), radial-gradient(50% 68.23% at 98.21% 96.61%, #41D1B7 0%, rgba(65, 209, 183, 0.35) 49.27%, rgba(65, 209, 183, 0) 100%), radial-gradient(83.71% 75.52% at -10.04% 2.86%, #8263DB 0%, rgba(129, 114, 218, 0.26) 56.87%, rgba(129, 114, 218, 0) 100%), linear-gradient(180deg, #58CCDC 0%, rgba(88, 204, 220, 0) 100%), linear-gradient(81.23deg, #FF557E 21.4%, rgba(255, 85, 85, 0) 84.87%, #F2F5FA); 
+      filter: blur(100px)  ;
+      opacity: 15%;
+    }
+    
+    .bg-blur2{
+      border-radius: 25rem; 
+      background: radial-gradient(50% 68.23% at 98.21% 96.61%, #41D1B7 0%, rgba(65, 209, 183, 0.35) 49.27%, rgba(65, 209, 183, 0) 100%), radial-gradient(83.71% 75.52% at -10.04% 2.86%, #8263DB 0%, rgba(129, 114, 218, 0.26) 56.87%, rgba(129, 114, 218, 0) 100%) ;
+      filter: blur(100px);
+    }
+
+  body, html {
+    width:100%;
+    overflow-x: hidden;
+
+  }
