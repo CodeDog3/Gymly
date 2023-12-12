@@ -8,9 +8,14 @@ import logo from "@/public/Gymify Nav Logo.png";
 import Image from "next/image";
 
 import Link from "next/link";
+import Router, { useRouter } from "next/navigation";
+
+
 
 const Navbar = () => {
-  const scrolled = useScrollTop();
+
+const router = useRouter()
+const scrolled = useScrollTop();
 
   return (
     <nav className="w-full transition-all">
@@ -32,7 +37,7 @@ const Navbar = () => {
             <li>API</li>
             <li className=" border-r-2 border-slate-400">About Us</li>
           </ul>
-          <Button onClick={() => {}}>Launch App</Button>
+          <Button onClick={()=>router.replace("/api/auth/signin")}>Launch App</Button>
         </div>
       </div>
     </nav>
