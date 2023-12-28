@@ -3,6 +3,7 @@
 
 import { POST } from "@/app/api/register/route";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const page = () => {
@@ -10,6 +11,8 @@ const page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  const router = useRouter();
 
   const changeHandler = (
     variant: string,
@@ -36,6 +39,21 @@ const page = () => {
     setError("");
 
     try {
+      const res = await fetch("api/userExists", {
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email})
+      })
+
+      const {user} = await res.json()
+
+      if(user){
+        setError("user already exists")
+        return
+      }
+
       await fetch("api/register", {
         method: "POST",
         headers: {
@@ -43,6 +61,7 @@ const page = () => {
         },
         body: JSON.stringify({ name, email, password }),
       });
+      router.replace("/login")
     } catch (err) {
       console.log(err);
     }
@@ -50,7 +69,7 @@ const page = () => {
 
   return (
     <div className="grid h-screen place-items-center">
-      <div className="  rounded-lg shadow-lg border-t-4 border-teal-400 p-5">
+      <div className="rounded-lg shadow-lg border-t-4 border-teal-400 p-5">
         <h1 className="text-xl font-bold my-4"> Register Here</h1>
         <form
           onSubmit={(e) => submitHandler(e)}
@@ -87,7 +106,7 @@ const page = () => {
           )}
           <Link className="text-sm text-gray-700" href={"/login"}>
             Already have an account?{" "}
-            <span className="underline">Register.</span>
+            <span className="underline">Login.</span>
           </Link>
         </form>
       </div>
