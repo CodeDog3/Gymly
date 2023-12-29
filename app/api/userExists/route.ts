@@ -10,6 +10,6 @@ export async function POST(req:Request){
         console.log("user: ", user)
         return NextResponse.json({user})
     } catch (error) {
-        console.log(error)
+        return NextResponse.json({message:"An error has occured."},{status:500})
     }
 }

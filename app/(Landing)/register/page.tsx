@@ -5,19 +5,29 @@ import { POST } from "@/app/api/register/route";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import options from "@/app/api/auth/[...nextauth]/options";
+import { useSession } from "next-auth/react";
+
 
 const page = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
+
+  const session = useSession();
+  if(session.status === "authenticated"){
+    router.replace("/home")
+  }
 
   const changeHandler = (
     variant: string,
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
+    console.log("running?")
     if (variant === "email") {
       setEmail(e.target.value);
     }

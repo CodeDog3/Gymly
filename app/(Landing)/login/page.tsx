@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from 'react'
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 const page = () => {
@@ -11,6 +11,11 @@ const page = () => {
     const [error, setError] = useState<string|null>(null)
 
     const router = useRouter()
+
+    const session = useSession();
+    if(session.status === "authenticated"){
+      router.replace("/home")
+    }
 
     const changeHandler = (variant:string, e:React.ChangeEvent<HTMLInputElement>) => {
         if(variant === "email"){
@@ -30,16 +35,13 @@ const page = () => {
             return
         }
         try{
-            console.log("1")
             const res = await signIn('credentials',{
                 email, password, redirect:false 
             })
             if(res?.error){
                 setError("Invalid Credentials")
-                console.log("nope")
                 return
             }
-
             router.replace("home")
         }
         catch(err){

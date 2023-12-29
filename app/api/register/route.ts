@@ -15,7 +15,6 @@ export async function POST(req:Request) {
         await connectMongoDB();
         await User.create({name,email,password : hashedPassword})
 
-        console.log(name , email, password)
         return NextResponse.json({message:"User registered"},{status:201})
 
     }
