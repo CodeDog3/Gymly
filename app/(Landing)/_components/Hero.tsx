@@ -1,5 +1,4 @@
 
-
 import React from "react";
 
 import svg from "@/public/design.svg";
@@ -8,8 +7,6 @@ import Image from "next/image";
 import Blur from "./Blur";
 import Button from "./Button";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 const Hero = () => {
 //  const router = useRouter()
@@ -34,7 +31,7 @@ const Hero = () => {
             filler filler filler filler filler filler filler filler filler
             filler.
           </h3>
-          <Link href="/login" className="max-w-[80%]">
+          <Link href="/login" className="max-w-[80%] z-10">
             <Button>Continue to Login</Button>
           </Link>
           <div className="absolute">

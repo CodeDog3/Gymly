@@ -19,7 +19,7 @@ body{
 }
 
 .linearbg{
-  background-size: 200% auto!important;
+  background-size: 150% auto!important;
   background-image: linear-gradient(81.02deg, var(--first) -53.47%, var(--second) 25.52%, var(--third) 64.8%)!important;
   }
 

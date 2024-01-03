@@ -113,12 +113,12 @@ const page = () => {
               <input value={email} onChange={(e) => changeHandler("email", e)} className=" bg-[rgb(38,39,44)] py-2 px-6" type="email" placeholder='Name@host.com' />
               <label className='text-white '>Password</label>
               <input value={password} onChange={(e) => changeHandler("password", e)} className="bg-[rgb(38,39,44)] py-2 px-6" type="password" placeholder='Password' />
-              <Button className='px-[100px] m-auto' type='submit'>Register</Button>
+              <Button className='w-[70%] m-auto' type='submit'>Register</Button>
               {error && <div className='bg-red-500 text-white font-bold w-fit text-sm rounded-md py-1 px-1'>
                 {error}
               </div>}
             </form>
-            <Link href={'/register'} className='text-sm text-gray-500'>
+            <Link href={'/login'} className='text-sm text-gray-500'>
               Already have an Account?{" "}
               <span className='underline text-sm'>Sign in.</span>
             </Link>

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -16,11 +16,14 @@ const page = () => {
     const [error, setError] = useState<string | null>(null)
 
     const router = useRouter()
-
     const session = useSession();
-    if (session.status === "authenticated") {
-        router.replace("/home")
-    }
+
+
+    useEffect(() => {
+        if (session.status === "authenticated") {
+            router.replace("home")
+        }
+    },[session])
 
     const changeHandler = (variant: string, e: React.ChangeEvent<HTMLInputElement>) => {
         if (variant === "email") {
@@ -62,7 +65,7 @@ const page = () => {
             <div className=" z-[-1] absolute bg-[url('/loginBG.jpg')] h-screen w-screen bg-no-repeat opacity-70 bg-cover"></div>
             <div className="grid place-items-center h-screen ">
                 <div className='flex rounded-xl h-[90%] w-[90%] overflow-hidden shadow-md border-t-2 border-b-[1px] border-cyan-300'>
-                    <div className='bg-[rgb(24,24,24)] ps-5 pe-5 relative sm:min-w-[26.25rem] sm:w-[23%] w-full'>
+                    <div className='bg-[rgb(24,24,24)] px-5 relative sm:min-w-[26.25rem] sm:w-[23%] w-full'>
                         <div className='flex flex-col items-center '>
                             <Image src={logo} alt='logo' width="100" height="100" />
                             <h3 className='text-slate-300 '> Sign up or Login with</h3>

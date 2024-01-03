@@ -37,6 +37,7 @@ const options: NextAuthOptions = {
                     if(!passwordsMatch){
                         return null
                     }
+                   
                     return user;
                 } catch (error) {
                     console.log(error)
