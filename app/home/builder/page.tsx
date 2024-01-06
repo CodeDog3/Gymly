@@ -18,9 +18,9 @@ const page = () => {
 
 
   return (
-    <div className=' h-screen w-screen '>
+    <div className=" h-[calc(100vh-40px)] w-screen ">
       <div className='w-full h-full bg-red-400 grid place-items-center'>
-        <div onDrop={handleDrop} onDragOver={handleDragOver} className='flex border-2 h-[40%] w-[40%] border-green-600'>
+        <div onDrop={handleDrop} onDragOver={handleDragOver} className='border-2 h-[40%] w-[40%] border-green-600'>
           {dropzone.map((item, idx) => (
             <h1 key={idx}>{item}</h1>
           ))}

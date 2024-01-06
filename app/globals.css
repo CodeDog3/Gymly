@@ -67,3 +67,13 @@ body{
     overflow-x: hidden;
 
   }
+
+  .no-scroll {
+    scrollbar-width: none;
+    scrollbar-color: transparent;
+    overflow: -webkit-scrollbar-none;
+  }
+
+ .no-scroll::-webkit-scrollbar { 
+    display: none; 
+} 
