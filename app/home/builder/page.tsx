@@ -18,8 +18,8 @@ const page = () => {
 
 
   return (
-    <div className=" h-[calc(100vh-40px)] w-screen ">
-      <div className='w-full h-full bg-red-400 grid place-items-center'>
+
+      <div className='w-full h-[calc(100vh-40px)]  grid place-items-center bg-slate-900'>
         <div onDrop={handleDrop} onDragOver={handleDragOver} className='border-2 h-[40%] w-[40%] border-green-600'>
           {dropzone.map((item, idx) => (
             <h1 key={idx}>{item}</h1>
@@ -27,8 +27,6 @@ const page = () => {
         </div>
       </div>
 
-
-    </div>
   )
 }
 

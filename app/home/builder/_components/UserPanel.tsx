@@ -45,10 +45,10 @@ const UserPanel = () => {
         <aside className='w-[360px] relative bg-[#090611] flex flex-col h-[calc(100vh-40px)] ' ref={panelRef}>
             <div className='w-[80%] min-w-[230px] h-fit flex mt-3 mx-auto justify-center '>
             <GroupDropDown muscleGroups={muscleGroups} dispatchFunction={setGroupSelected}
-            className={"overflow-hidden"}
+            className={"overflow-hidden rounded-md"}
             />
             </div>
-            <div className='absolute w-[2px] h-full bg-gradient-to-b from-blue-400 to-purple-400 right-0 hover:cursor-ew-resize' onMouseDown={handleMouseDown} />
+            <div className='absolute w-[1px] h-full bg-gradient-to-b from-blue-400 to-purple-400 right-0 hover:cursor-ew-resize' onMouseDown={handleMouseDown} />
             <div className='h-full overflow-hidden hover:overflow-y-auto no-scroll'>
                 {groupSelected ?
                     <ExercisesList
