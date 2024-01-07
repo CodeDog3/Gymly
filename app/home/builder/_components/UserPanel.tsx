@@ -1,8 +1,9 @@
 "use client"
-import React, { ElementRef, useContext, useRef, useState } from 'react'
+import React, { ElementRef, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge';
 import ExercisesList from './ExercisesList';
-import { group } from 'console';
+import { muscleGroups } from './muscleGroups';
+import GroupDropDown from './GroupDropDown';
 
 const UserPanel = () => {
     const panelRef = useRef<ElementRef<"aside">>(null);
@@ -39,34 +40,22 @@ const UserPanel = () => {
         removeEventListener("mouseup", handleMouseUp)
     }
 
-    const muscleGroups = [
-        { id: 1, name: "Legs", exercises: ["lunges", "squats", "leg extensions"] },
-        { id: 2, name: "Chest", exercises: ["bench press", "incline bench press", "pec flies"] },
-        { id: 3, name: "Back", exercises: ["rows", "lat pulldown", "cable pulldown"] },
-        { id: 4, name: "Biceps", exercises: ["curls", "hammer curls", "machine curls"] },
-        { id: 5, name: "Triceps", exercises: ["tricep extensions", "triceps machine", "skull crushers"] },
-        { id: 6, name: "Shoulders", exercises: ["lat raises", "shoulder press", "rear flies"] },
-        { id: 7, name: "Abs", exercises: ["sit ups", "planks", "crunches"] },
-        { id: 8, name: "Cardio", exercises: ["treadmill", "bike", "running", "swimming", "jumping", "plyometrics", "sprinting", "sports", "skiing"] },
-    ]
-
 
     return (
-        <aside className='w-[360px] relative bg-[#1a1625] flex flex-col h-[calc(100vh-40px)] ' ref={panelRef}>
-            <div className='absolute w-[2px] h-full bg-gray-400 right-0 hover:cursor-ew-resize' onMouseDown={handleMouseDown} />
-            <div className='flex justify-evenly w-full h-40 items-center flex-wrap border-b border-white pb-3'>
-                {muscleGroups.map((elem) => (
-                    <button role="button" className={twMerge('border border-white py-3 w-20 rounded-lg text-center hover:bg-slate-300', groupSelected == elem.id ? "border-green-300" : "")} 
-                    key={elem.id} onClick={() => setGroupSelected(elem.id)}> {elem.name} 
-                    </button>
-                ))}
+        <aside className='w-[360px] relative bg-[#090611] flex flex-col h-[calc(100vh-40px)] ' ref={panelRef}>
+            <div className='w-[80%] min-w-[230px] h-fit flex mt-3 mx-auto justify-center '>
+            <GroupDropDown muscleGroups={muscleGroups} dispatchFunction={setGroupSelected}
+            className={"overflow-hidden"}
+            />
             </div>
+            <div className='absolute w-[2px] h-full bg-gradient-to-b from-blue-400 to-purple-400 right-0 hover:cursor-ew-resize' onMouseDown={handleMouseDown} />
             <div className='h-full overflow-hidden hover:overflow-y-auto no-scroll'>
-                {groupSelected &&
+                {groupSelected ?
                     <ExercisesList
                         name={muscleGroups[groupSelected - 1].name}
                         exercises={muscleGroups[groupSelected - 1].exercises} />
-                }
+                :<h1 className='text-xs text-white text-center'>Please Select a Muscle Group to Continue.</h1>
+    }
             </div>
         </aside>
 
