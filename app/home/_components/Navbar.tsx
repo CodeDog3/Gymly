@@ -20,27 +20,26 @@ const Navbar = () => {
       <Image src={navLogo} width={80} height={80} alt={"pfp"} />
 
       <div className='flex flex-col gap-y-8 mt-5 items-center'>
-        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
+        <div className={twMerge('group/navItem hover:border-[#02b096] border border-transparent hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] shadow-md px-3 py-3 rounded-lg ',pathname === "/home"? "border-[#02b096] shadow-[#02b096]":"")}>
           <Link href={"/home"} className=' justify-center relative'>
-            <FaHome color={"#5c5c5c"} size={"2em"} />
+            <FaHome className={twMerge("fill-white opacity-70 group-hover/navItem:opacity-100", pathname === "/home"? "opacity-100": "")} size={"2em"} />
+          </Link>
+        </div>
+        <div className='group/navItem hover:border-[#02b096] border border-transparent hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] shadow-md px-3 py-3 rounded-lg '>
+          <Link href={"/home/builder"} className=' justify-center relative'>
+            <IoBuild className="fill-white opacity-70 group-hover/navItem:opacity-100" size={"2em"} />
             {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
           </Link>
         </div>
-        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
-          <Link href={"/home/builder"} className=' justify-center relative hover:opacity-70'>
-            <IoBuild color={"#5c5c5c"} size={"2em"} />
+        <div className='group/navItem hover:border-[#02b096] border border-transparent hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] shadow-md px-3 py-3 rounded-lg '>
+          <Link href={"/Dashboard"} className=' justify-center relative'>
+            <FaAccessibleIcon className="fill-white opacity-70 group-hover/navItem:opacity-100" size={"2em"} />
             {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
           </Link>
         </div>
-        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
-          <Link href={"/Dashboard"} className=' justify-center relative hover:opacity-70'>
-            <FaAccessibleIcon color={"#5c5c5c"} size={"2em"} />
-            {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
-          </Link>
-        </div>
-        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
-          <Link href={"/Dashboard"} className=' justify-center relative hover:opacity-70'>
-            <IoLibrary color={"#5c5c5c"} size={"2em"} />
+        <div className='group/navItem hover:border-[#02b096] border border-transparent hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] shadow-md px-3 py-3 rounded-lg '>
+          <Link href={"/Dashboard"} className='justify-center relative '>
+            <IoLibrary className="fill-white opacity-70 group-hover/navItem:opacity-100" size={"2em"} />
             {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
           </Link>
         </div>
