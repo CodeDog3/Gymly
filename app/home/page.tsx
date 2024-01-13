@@ -15,6 +15,7 @@ const page = () => {
     <button onClick={()=> signOut()} className='bg-red-500 font-bold px-6 py-2 mt-3'>
       Log Out
     </button>
+    <h1>asdasda</h1>
     </>
   )
 }

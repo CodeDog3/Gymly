@@ -5,9 +5,11 @@ const layout = ({children,} : {
     children: React.ReactNode}
     ) => {
   return (
-    <div className='flex w-full'>
+    <div className='flex'>
         <UserPanel />
-        {children}
+        <div className='w-full'>
+          {children}
+        </div>
     </div>
   )
 }
