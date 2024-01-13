@@ -42,7 +42,7 @@ const UserPanel = () => {
 
 
     return (
-        <aside className='w-[360px] relative bg-[#090611] flex flex-col h-[calc(100vh-40px)] ' ref={panelRef}>
+        <aside className='w-[360px] relative bg-[#090611] flex flex-col h-screen ' ref={panelRef}>
             <div className='w-[80%] min-w-[230px] h-fit flex mt-3 mx-auto justify-center '>
             <GroupDropDown muscleGroups={muscleGroups} dispatchFunction={setGroupSelected}
             className={"overflow-hidden rounded-md"}

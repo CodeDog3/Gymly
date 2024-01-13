@@ -1,41 +1,60 @@
 "use client"
 import Link from 'next/link'
 import React from 'react'
-import logo from "@/public/Gymify Nav Logo.png"
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
+import { useSession } from 'next-auth/react'
+import { FaHome, FaAccessibleIcon } from "react-icons/fa";
+import { IoBuild, IoLibrary } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import navLogo from "@/public/Gymify Nav Logo.png"
 
-
-const links = [
-  {route:"/home" , text:"Dashboard"},
-  {route:"/home/builder",text:"Builder"},
-  {route:"/home2" , text:"empty"},
-  {route:"/home3" , text:"empty"},
-];
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { data: Session } = useSession();
 
   return (
-    <div className=' text-white font-bold bg-slate-500 w-full h-[60px] shadow-md flex px-4'>
-        
-      <Link href={"/"} className='flex items-center z-50'>
-        <Image src={logo} alt='logo' height={70} width={60}/>
-        <h1>Gymly</h1>
-      </Link>
+    <div className='flex flex-col text-white font-bold bg-[#212121] shadow-md h-screen w-20 transition-all relative'>
+      <Image src={navLogo} width={80} height={80} alt={"pfp"} />
 
-      <div className='flex items-center justify-evenly w-[40%] h-full ml-20'>
-        {links.map((item, idx)=>(
-          <Link key={idx} href={item.route} className='w-[120px] group/navitem h-full flex items-center justify-center relative'>
-            <h1 className={twMerge("group-hover/navitem:text-red-500", pathname === item.route ? "text-red-500" : "")}>{item.text}</h1>
-            <div className={twMerge("absolute h-1 w-full bottom-0 group-hover/navitem:bg-red-500", pathname === item.route ? "bg-red-500" : "")}></div>
+      <div className='flex flex-col gap-y-8 mt-5 items-center'>
+        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
+          <Link href={"/home"} className=' justify-center relative'>
+            <FaHome color={"#5c5c5c"} size={"2em"} />
+            {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
           </Link>
-        ))}
+        </div>
+        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
+          <Link href={"/home/builder"} className=' justify-center relative hover:opacity-70'>
+            <IoBuild color={"#5c5c5c"} size={"2em"} />
+            {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
+          </Link>
+        </div>
+        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
+          <Link href={"/Dashboard"} className=' justify-center relative hover:opacity-70'>
+            <FaAccessibleIcon color={"#5c5c5c"} size={"2em"} />
+            {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
+          </Link>
+        </div>
+        <div className=' hover:border-[#02b096] hover:border hover:shadow-[#02b096] hover:shadow-md shadow-[#3d3d3d] px-3 py-3 rounded-lg '>
+          <Link href={"/Dashboard"} className=' justify-center relative hover:opacity-70'>
+            <IoLibrary color={"#5c5c5c"} size={"2em"} />
+            {/* <div className={twMerge("absolute h-1 bottom-0 group-hover/navitem:bg-white rounded-t-md", pathname === Dash route ? "bg-white" : "")}></div> */}
+          </Link>
+        </div>
       </div>
-          
 
-        
+      <div className='w-full flex justify-center mt-[390px]'>
+        <Image className="rounded-3xl flex justify-center cursor-pointer" src={Session?.user?.image as string} width={50} height={50} alt={"pfp"} />
+      </div>
+      <div className='bg-[#02b096] w-full h-7 flex justify-center items-center hover:opacity-70 transition-[300] absolute bottom-0 cursor-pointer'>
+        <IoMdArrowRoundBack size={"1.5em"} />
+      </div>
+
+
+
 
     </div>
   )
