@@ -20,7 +20,7 @@ const Navbar = () => {
   const items = [{ path: "/home", Icon: FaHome }, { path: "/home/builder", Icon: IoBuild }, { path: "/home1", Icon: FaAccessibleIcon }, { path: "/home2", Icon: IoLibrary }]
 
   return (
-      <div className='bg-[#212121] h-screen relative'>
+      <div className=' h-screen relative'>
 
         {!isCollapsed ? <div className={twMerge('flex flex-col text-white font-bold bg-[#212121] shadow-md h-full w-20 transition-[300] relative', isCollapsed && "w-0")}>
           <Image src={navLogo} width={80} height={80} alt={"pfp"} />
@@ -40,8 +40,10 @@ const Navbar = () => {
             <IoMdArrowRoundBack size={"1.5em"} />
           </div>
         </div>
-        :
-        <div className={`${isCollapsed && "h-16 w-3 bg-[#02b096] relative left-2 top-[50%] translate-y-[-50%]"}`} onClick={() => setIsCollapsed(false)} />}
+        :<div className='asdas' />}
+        {/* <div className={`${isCollapsed && "h-16 w-3 bg-[#02b096] relative left-1 top-[50%] translate-y-[-50%]"}`} onClick={() => setIsCollapsed(false)} />} */}
+        
+        
       </div>
   )
 }
