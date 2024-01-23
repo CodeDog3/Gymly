@@ -11,18 +11,21 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import navLogo from "@/public/Gymify Nav Logo.png"
 import NavItem from './NavItem'
 
+type Props = {
+  dispatch : (iscollapsed: boolean) => void
+}
 
-const Navbar = () => {
+
+const Navbar = ({dispatch}: Props ) => {
   const pathname = usePathname();
   const { data: Session } = useSession();
-  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const items = [{ path: "/home", Icon: FaHome }, { path: "/home/builder", Icon: IoBuild }, { path: "/home1", Icon: FaAccessibleIcon }, { path: "/home2", Icon: IoLibrary }]
 
   return (
       <div className=' h-screen relative'>
 
-        {!isCollapsed ? <div className={twMerge('flex flex-col text-white font-bold bg-[#212121] shadow-md h-full w-20 transition-[300] relative', isCollapsed && "w-0")}>
+        <div className={'flex flex-col text-white font-bold bg-[#212121] shadow-md h-full w-20 transition-[300] relative'}>
           <Image src={navLogo} width={80} height={80} alt={"pfp"} />
 
           <div className='flex flex-col gap-y-8 mt-5 items-center'>
@@ -36,12 +39,11 @@ const Navbar = () => {
           <div className='w-full flex justify-center mt-[390px]'>
             <Image className="rounded-3xl flex justify-center cursor-pointer" src={Session?.user?.image as string} width={50} height={50} alt={"pfp"} />
           </div>
-          <div onClick={() => setIsCollapsed(true)} className='bg-[#02b096] w-full h-7 flex justify-center items-center hover:opacity-70 transition-[300] absolute bottom-0 cursor-pointer'>
+          <div onClick={() => dispatch(true)} className='bg-[#02b096] w-full h-7 flex justify-center items-center hover:opacity-70 transition-[300] absolute bottom-0 cursor-pointer'>
             <IoMdArrowRoundBack size={"1.5em"} />
           </div>
         </div>
-        :<div className='asdas' />}
-        {/* <div className={`${isCollapsed && "h-16 w-3 bg-[#02b096] relative left-1 top-[50%] translate-y-[-50%]"}`} onClick={() => setIsCollapsed(false)} />} */}
+  
         
         
       </div>

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import Navbar from './_components/Navbar'
+import NavbarWrapper from './_components/NavbarWrapper'
 
 const layout = ({children,} : {
     children: React.ReactNode}
@@ -8,13 +8,9 @@ const layout = ({children,} : {
   return (
     <div className='flex '>
       <div className='relative'>
-        
-        <Navbar/>
-        <div className='w-5 h-5 bg-orange-500 absolute bottom-0'>
-          asdfdsf
-        </div>
+        <NavbarWrapper />
       </div>
-      <div className='w-full '>
+      <div className='w-full'>
         {children}  
       </div>
     </div>
