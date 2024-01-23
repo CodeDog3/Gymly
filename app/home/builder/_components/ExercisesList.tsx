@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import { MdDragIndicator } from "react-icons/md";
+import DragItem from './DragItem';
 
 type Props = HTMLAttributes<HTMLElement> & React.DOMAttributes<HTMLElement> & {
     name?: string;
@@ -14,10 +15,10 @@ const handleDrag = (e: React.DragEvent, draggedItem: string) => {
 const ExercisesList = ({ name, exercises }: Props) => {
     return (
         <>
-        <div className='text-transparent bg-clip-text font-sans-serif text-[2rem] font-bold bg-gradient-to-r from-blue-500 to-red-500 text-clip inline-block m-3'>{name}</div>
+        <div className='text-transparent bg-clip-text font-sans-serif text-[2rem] font-bold bg-gradient-to-r from-slate-400 to-[#02b096] text-clip inline-block m-3'>{name}</div>
         <div className='flex flex-col gap-y-5 px-5' >
             {exercises.map((elem, idx) => (
-                <div key={idx} className='bg-transparent rounded-xl bg-gradient-to-r from-blue-500 via-slate-400 to-purple-500 shadow-md w-[80%] min-w-[230px] grid place-items-center font-sans-serif'>
+                <DragItem key={idx}>
 
                     <div 
                         draggable
@@ -32,8 +33,11 @@ const ExercisesList = ({ name, exercises }: Props) => {
                         </div>
 
                     </div>
-                </div>
+                </DragItem>
             ))}
+            <DragItem>
+                <p>+ add new</p>
+            </DragItem>
         </div>
         </>
 

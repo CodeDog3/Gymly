@@ -17,9 +17,9 @@ const GroupDropDown = ({ muscleGroups, dispatchFunction, className }: Props) => 
 
   return (
     <>
-      <ol className={twMerge(' bg-slate-700 text-white font-sans cursor-pointer w-full text-center font-semibold', className)}>
+      <ol className={twMerge(' bg-slate-700 text-white font-sans cursor-pointer w-full text-center font-semibold ', className)}>
         <li onClick={(e) => setShowOptions((showOptions) => !showOptions)}>
-          <div className=' w-full text-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500 inline-block border-b-[2px] border-slate-500'>{selected.toUpperCase()}</div>
+          <div className=' w-full text-lg text-[#02b096] border-b-[2px] border-slate-500'>{selected.toUpperCase()}</div>
         </li>
         {showOptions && muscleGroups.map((elem) => (
             <li 
@@ -29,7 +29,7 @@ const GroupDropDown = ({ muscleGroups, dispatchFunction, className }: Props) => 
               setShowOptions(false)
               setSelected(elem.name)
              }}
-            className=' bg-slate-700 w-full hover:bg-slate-500 pl-2 text-left'>{elem.name}</li>
+            className=' bg-slate-700 w-full hover:bg-slate-500 hover:text-[#02b096] pl-2 text-left'>{elem.name}</li>
           ))}
       </ol>
 

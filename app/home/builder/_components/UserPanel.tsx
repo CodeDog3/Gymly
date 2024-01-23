@@ -42,13 +42,13 @@ const UserPanel = () => {
 
 
     return (
-        <aside className='w-[360px] relative bg-[#090611] flex flex-col h-screen ' ref={panelRef}>
+        <aside className='w-[360px] relative bg-[#111119] flex flex-col h-screen ' ref={panelRef}>
             <div className='w-[80%] min-w-[230px] h-fit flex mt-3 mx-auto justify-center '>
             <GroupDropDown muscleGroups={muscleGroups} dispatchFunction={setGroupSelected}
             className={"overflow-hidden rounded-md"}
             />
             </div>
-            <div className='absolute w-[1px] h-full bg-gradient-to-b from-blue-400 to-purple-400 right-0 hover:cursor-ew-resize' onMouseDown={handleMouseDown} />
+            <div className='absolute w-[1px] h-full bg-gradient-to-b from-slate-400 to-[#02b096] right-0 hover:cursor-ew-resize' onMouseDown={handleMouseDown} />
             <div className='h-full overflow-hidden hover:overflow-y-auto no-scroll'>
                 {groupSelected ?
                     <ExercisesList

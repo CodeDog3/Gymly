@@ -19,7 +19,7 @@ const page = () => {
 
   return (
 
-      <div className='flex-shrinkh-screen grid place-items-center bg-slate-900'>
+      <div className=' h-screen grid place-items-center bg-slate-900'>
         <div onDrop={handleDrop} onDragOver={handleDragOver} className='border-2 h-[40%] w-[40%] border-green-600'>
           {dropzone.map((item, idx) => (
             <h1 key={idx}>{item}</h1>
