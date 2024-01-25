@@ -3,6 +3,7 @@ import { MdDragIndicator } from "react-icons/md";
 import DragItem from './DragItem';
 import { TiPlusOutline } from "react-icons/ti";
 import AddExerciseModal from './AddExerciseModal';
+import { useModalStore } from '../../_hooks/useModalStore';
 
 type Props = HTMLAttributes<HTMLElement> & React.DOMAttributes<HTMLElement> & {
     name?: string;
@@ -17,6 +18,7 @@ const handleDrag = (e: React.DragEvent, draggedItem: string) => {
 
 const ExercisesList = ({ name, exercises }: Props) => {
 const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+const toggleModal = useModalStore(state=>state.toggleModal)
 
     return (
         <>
@@ -42,7 +44,7 @@ const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
                     </DragItem>
                 ))}
                 <DragItem>
-                    <div  onClick={()=> setIsModalOpen(true)} 
+                    <div  onClick={toggleModal} 
                     className=' py-6 px-2 w-[97%] h-[91%] rounded-xl bg-slate-700 hover:opacity-90 transition-[500] text-white font-extrabold text-sm '
                     >
                         <div className='flex justify-between px-3 items-center'>

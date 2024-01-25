@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react'
+import { useModalStore } from '../_hooks/useModalStore'
 import { twMerge } from 'tailwind-merge'
+import AddExerciseModal from './_components/AddExerciseModal'
 
 const page = () => {
 
@@ -15,8 +17,8 @@ const page = () => {
     e.preventDefault();
 
   }
-
-
+  const isOpen = useModalStore(state => state.isOpen);
+  
   return (
 
       <div className=' h-screen grid place-items-center bg-slate-900'>
@@ -25,6 +27,7 @@ const page = () => {
             <h1 key={idx}>{item}</h1>
           ))}
         </div>
+        {isOpen && <AddExerciseModal />}
       </div>
 
   )

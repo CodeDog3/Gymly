@@ -40,9 +40,9 @@ const UserPanel = () => {
         removeEventListener("mouseup", handleMouseUp)
     }
 
-
     return (
         <aside className='w-[360px] relative bg-[#111119] flex flex-col h-screen ' ref={panelRef}>
+
             <div className='w-[80%] min-w-[230px] h-fit flex mt-3 mx-auto justify-center '>
             <GroupDropDown muscleGroups={muscleGroups} dispatchFunction={setGroupSelected}
             className={"overflow-hidden rounded-md"}
