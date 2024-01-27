@@ -27,11 +27,16 @@ type State ={
     ExerciseList : ExerciseList
 }
 
-export const useExerciseList = create<Actions & State>(set => ({
+export const useExerciseList = create<Actions & State>((set) => ({
      ExerciseList : ExerciseListInitial,
-     AddExercise : (newExercise, id) => set(state => {
-        const newList = state.ExerciseList;
-        newList[id-1].exercises = [...state.ExerciseList[id-1].exercises, newExercise]
-        return {ExerciseList : newList}
-     })})
+     AddExercise : (newExercise, id) => set((state) => {
+        
+        let newState = [...state.ExerciseList];
+
+        newState[id-1].exercises = [...newState[id-1].exercises, newExercise]
+        return {ExerciseList: newState}
+
+        // return {ExerciseList : [...state.ExerciseList, {...state.ExerciseList[id-1], state.ExerciseList.exercises : [...state.ExerciseList[id-1].exercises, newExercise]} ] }
+     }
+     )})
 )

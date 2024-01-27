@@ -3,6 +3,7 @@ import { MdDragIndicator } from "react-icons/md";
 import DragItem from './DragItem';
 import { TiPlusOutline } from "react-icons/ti";
 import { useModalStore } from '../../_hooks/useModalStore';
+import { useExerciseList } from '../../_hooks/useExerciseList';
 
 type Props = HTMLAttributes<HTMLElement> & React.DOMAttributes<HTMLElement> & {
     name?: string;
