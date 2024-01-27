@@ -15,7 +15,7 @@ console.log(ExerciseList);
 
 const submitHandler = (e:FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-  AddExercise("leg press", "Legs")
+  AddExercise("leg press", 1)
   toggleModal();
 }
 

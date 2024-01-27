@@ -2,13 +2,15 @@
 import React, { ElementRef, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge';
 import ExercisesList from './ExercisesList';
-import { muscleGroups } from './muscleGroups';
 import GroupDropDown from './GroupDropDown';
+import { useExerciseList } from '../../_hooks/useExerciseList';
 
 const UserPanel = () => {
     const panelRef = useRef<ElementRef<"aside">>(null);
     const [groupSelected, setGroupSelected] = useState<null | number>(null)
     // const isResizing = useRef(false);
+
+    const ExerciseList = useExerciseList(state => state.ExerciseList);
 
 
     const handleMouseDown = (
@@ -44,7 +46,7 @@ const UserPanel = () => {
         <aside className='w-[360px] relative bg-[#111119] flex flex-col h-screen ' ref={panelRef}>
 
             <div className='w-[80%] min-w-[230px] h-fit flex mt-3 mx-auto justify-center '>
-            <GroupDropDown muscleGroups={muscleGroups} dispatchFunction={setGroupSelected}
+            <GroupDropDown muscleGroups={ExerciseList} dispatchFunction={setGroupSelected}
             className={"overflow-hidden rounded-md"}
             />
             </div>
@@ -52,8 +54,8 @@ const UserPanel = () => {
             <div className='h-full overflow-hidden hover:overflow-y-auto no-scroll'>
                 {groupSelected ?
                     <ExercisesList
-                        name={muscleGroups[groupSelected - 1].name}
-                        exercises={muscleGroups[groupSelected - 1].exercises} />
+                        name={ExerciseList[groupSelected - 1].name}
+                        exercises={ExerciseList[groupSelected - 1].exercises} />
                 :<h1 className='text-xs text-white text-center'>Please Select a Muscle Group to Continue.</h1>
     }
             </div>

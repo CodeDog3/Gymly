@@ -16,7 +16,6 @@ const handleDrag = (e: React.DragEvent, draggedItem: string) => {
 
 
 const ExercisesList = ({ name, exercises }: Props) => {
-const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 const toggleModal = useModalStore(state=>state.toggleModal)
 
     return (
