@@ -2,7 +2,6 @@ import React, { HTMLAttributes, useState } from 'react'
 import { MdDragIndicator } from "react-icons/md";
 import DragItem from './DragItem';
 import { TiPlusOutline } from "react-icons/ti";
-import AddExerciseModal from './AddExerciseModal';
 import { useModalStore } from '../../_hooks/useModalStore';
 
 type Props = HTMLAttributes<HTMLElement> & React.DOMAttributes<HTMLElement> & {
@@ -22,7 +21,6 @@ const toggleModal = useModalStore(state=>state.toggleModal)
 
     return (
         <>
-            {isModalOpen && <AddExerciseModal />}
             <div className='text-transparent bg-clip-text font-sans-serif text-[2rem] font-bold bg-gradient-to-r from-slate-400 to-[#02b096] text-clip inline-block m-3'>{name}</div>
             <div className='flex flex-col gap-y-5 px-5' >
                 {exercises.map((elem, idx) => (

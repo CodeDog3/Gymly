@@ -6,6 +6,7 @@ import AddExerciseModal from './_components/AddExerciseModal'
 
 const page = () => {
 
+  const isOpen = useModalStore(state => state.isOpen);
   const [dropzone, setDropzone] = useState<string[]>([])
 
   const handleDrop = (e: React.DragEvent) => {
@@ -17,8 +18,9 @@ const page = () => {
     e.preventDefault();
 
   }
-  const isOpen = useModalStore(state => state.isOpen);
   
+
+
   return (
 
       <div className=' h-screen grid place-items-center bg-slate-900'>

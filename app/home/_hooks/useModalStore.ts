@@ -1,14 +1,13 @@
-import {create } from "zustand"
+import {create} from 'zustand'
 
 type State = {
-    isOpen : boolean,
+    isOpen : boolean
 }
 
 type Actions = {
-    toggleModal: () => void,
+   toggleModal : () => void
 }
-
-export const useModalStore = create<State & Actions>((set)=>({
-    isOpen: false,
-    toggleModal: () => set(state => ({isOpen: !state.isOpen})),
+export const useModalStore = create<State & Actions>((set) => ({
+    isOpen : false ,
+    toggleModal : () => set(state => ({isOpen : !state.isOpen})),
 }));
