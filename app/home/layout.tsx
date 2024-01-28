@@ -7,8 +7,8 @@ const layout = ({children,} : {
       //render the navbar only when isnotcollapsed and render open bar otherwise
   return (
     <div className='flex '>
-      <div className='relative'>
-        <NavbarWrapper />
+      <div>
+        <NavbarWrapper/>
       </div>
       <div className='w-full'>
         {children}  

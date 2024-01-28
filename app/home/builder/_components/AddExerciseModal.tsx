@@ -4,8 +4,8 @@ import { useModalStore } from "../../_hooks/useModalStore"
 import { useSelectedExercise } from "../../_hooks/useSelectedExercise";
 import React from "react";
 
-
 const AddExerciseModal = () => {
+
 
 const ExerciseName = React.createRef<HTMLInputElement>();
 
@@ -19,6 +19,7 @@ const submitHandler = (e:FormEvent<HTMLFormElement>) => {
   if(ExerciseName.current?.value != "" && ExerciseName.current != null && selectedID != null){
     AddExercise(ExerciseName.current.value, selectedID)
   }
+
   toggleModal();
 }
 
@@ -32,8 +33,8 @@ const submitHandler = (e:FormEvent<HTMLFormElement>) => {
         <label className='text-lg font-bold'>Description</label>
         <textarea className='h-[150px] rounded-sm px-2 font-medium'></textarea>
         <div className="flex justify-center gap-x-8">
-          <button onClick={toggleModal}>Cancel</button>
           <button type='submit'>Submit</button>
+          <button onClick={toggleModal}>Cancel</button>
         </div>
 
       </div>

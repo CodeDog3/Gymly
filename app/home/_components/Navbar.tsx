@@ -36,7 +36,7 @@ const Navbar = ({dispatch}: Props ) => {
             ))}
           </div>
 
-          <div className='w-full flex justify-center mt-[390px]'>
+          <div className='w-full flex justify-center absolute bottom-[7%]'>
             <Image className="rounded-3xl flex justify-center cursor-pointer" src={Session?.user?.image as string} width={50} height={50} alt={"pfp"} />
           </div>
           <div onClick={() => dispatch(true)} className='bg-[#02b096] w-full h-7 flex justify-center items-center hover:opacity-70 transition-[300] absolute bottom-0 cursor-pointer'>
