@@ -35,8 +35,6 @@ export const useExerciseList = create<Actions & State>((set) => ({
 
         newState[id-1].exercises = [...newState[id-1].exercises, newExercise]
         return {ExerciseList: newState}
-
-        // return {ExerciseList : [...state.ExerciseList, {...state.ExerciseList[id-1], state.ExerciseList.exercises : [...state.ExerciseList[id-1].exercises, newExercise]} ] }
      }
      )})
 )

@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { MuscleGroupType } from './muscleGroups'
 import { twMerge } from 'tailwind-merge'
+import { useSelectedExercise } from '../../_hooks/useSelectedExercise'
 
 type Props = {
   dispatchFunction: React.Dispatch<React.SetStateAction<number | null>>
@@ -14,6 +15,7 @@ const GroupDropDown = ({ muscleGroups, dispatchFunction, className }: Props) => 
 
   const [showOptions, setShowOptions] = useState<boolean>(false)
   const [selected, setSelected] = useState<string>("Select Group")
+  const setID = useSelectedExercise(state => state.setID)
 
   return (
     <>
@@ -28,6 +30,7 @@ const GroupDropDown = ({ muscleGroups, dispatchFunction, className }: Props) => 
               dispatchFunction(elem.id)
               setShowOptions(false)
               setSelected(elem.name)
+              setID(elem.id)
              }}
             className=' bg-slate-700 w-full hover:bg-slate-500 hover:text-[#02b096] pl-2 text-left'>{elem.name}</li>
           ))}
