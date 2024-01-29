@@ -21,7 +21,7 @@ const Dropper = () => {
         <div className='h-screen grid place-items-center bg-slate-900'>
           <div onDrop={handleDrop} onDragOver={handleDragOver} className='border-2 h-[40%] w-[40%] border-green-600 flex flex-col gap-y-1'>
             {dropzone.map((item, idx) => (
-              <ActiveExerciseList key={idx} name={item.name} sets={item.sets} reps={item.reps}></ ActiveExerciseList>
+              <ActiveExerciseList key={idx} ExerciseIndex={idx} name={item.name} sets={item.sets} reps={item.reps} dispatch={setDropzone}></ ActiveExerciseList>
             ))}
           </div>
           {isOpen && <AddExerciseModal />}
