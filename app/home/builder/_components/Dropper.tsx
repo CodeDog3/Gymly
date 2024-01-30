@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useModalStore } from '../../_hooks/useModalStore'
 import AddExerciseModal from './AddExerciseModal'
 import ActiveExerciseList from './ActiveExerciseList'
+import { DragDropContext, Draggable, Droppable, OnDragEndResponder } from 'react-beautiful-dnd';
 
 const Dropper = () => {
     const isOpen = useModalStore(state => state.isOpen);
@@ -16,14 +17,37 @@ const Dropper = () => {
     const handleDragOver = (e: React.DragEvent) => {
       e.preventDefault();
     }
+
+    const handleDragEnd = (result: any)=> {
+      if(!result.destination) return;
+      const items = Array.from(dropzone);
+      const [...reorderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index,0,...reorderedItem);
+      setDropzone(items)
+      console.log(dropzone);
+    }
+
     return (
   
         <div className='h-screen grid place-items-center bg-slate-900'>
-          <div onDrop={handleDrop} onDragOver={handleDragOver} className='border-2 h-[40%] w-[40%] border-green-600 flex flex-col gap-y-1'>
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId='exercise-item'>
+              {(provided) => (
+          <ul onDrop={handleDrop} onDragOver={handleDragOver} {...provided.droppableProps} ref={provided.innerRef} className='border-2 h-[40%] w-[40%] border-green-600 flex flex-col gap-y-1'>
             {dropzone.map((item, idx) => (
-              <ActiveExerciseList key={idx} ExerciseIndex={idx} name={item.name} sets={item.sets} reps={item.reps} dispatch={setDropzone}></ ActiveExerciseList>
+              <Draggable key={idx} draggableId={idx.toString()} index={idx}>
+                {(provided) => (
+                  <li {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
+                    <ActiveExerciseList  ExerciseIndex={idx} name={item.name} sets={item.sets} reps={item.reps} dispatch={setDropzone} />
+                  </li>
+                )}
+              </Draggable>
             ))}
-          </div>
+            {provided.placeholder}
+          </ul>
+        )}
+          </Droppable>
+          </DragDropContext>
           {isOpen && <AddExerciseModal />}
         </div>
   

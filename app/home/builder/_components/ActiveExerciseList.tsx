@@ -15,8 +15,6 @@ type Dispatch = {
     }[]>>
 }
 
-
-
 const ActiveExerciseList = ({name, sets, reps, children, ExerciseIndex, dispatch }: PropsWithChildren<Props> & Dispatch) => {
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>, idx:number, type:string) =>{
@@ -32,7 +30,6 @@ const ActiveExerciseList = ({name, sets, reps, children, ExerciseIndex, dispatch
             dispatch(state => {
                 const newState = state;
                 newState[idx].sets = value;
-                console.log(newState)
                 return newState;
             })
         ]}
@@ -40,7 +37,6 @@ const ActiveExerciseList = ({name, sets, reps, children, ExerciseIndex, dispatch
             dispatch(state =>{
                 const newState = state;
                 newState[idx].reps = value
-                console.log(newState)
                 return newState
             })
         }
@@ -55,7 +51,7 @@ const ActiveExerciseList = ({name, sets, reps, children, ExerciseIndex, dispatch
         <input className='w-6' type='number' required onChange={(e) => handleChange(e, ExerciseIndex, "sets")}></input>
         </div>
         <div>
-        <label>reps</label>
+        <label>Reps</label>
         <input className='w-6' type='number' required onChange={(e) => handleChange(e, ExerciseIndex, "reps")}></input>
         </div>
     </div>
