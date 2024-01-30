@@ -21,10 +21,9 @@ const Dropper = () => {
     const handleDragEnd = (result: any)=> {
       if(!result.destination) return;
       const items = Array.from(dropzone);
-      const [...reorderedItem] = items.splice(result.source.index, 1);
-      items.splice(result.destination.index,0,...reorderedItem);
+      const [reorderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index,0,reorderedItem);
       setDropzone(items)
-      console.log(dropzone);
     }
 
     return (
@@ -33,11 +32,11 @@ const Dropper = () => {
           <DragDropContext onDragEnd={handleDragEnd}>
             <Droppable droppableId='exercise-item'>
               {(provided) => (
-          <ul onDrop={handleDrop} onDragOver={handleDragOver} {...provided.droppableProps} ref={provided.innerRef} className='border-2 h-[40%] w-[40%] border-green-600 flex flex-col gap-y-1'>
+          <ul onDrop={handleDrop} onDragOver={handleDragOver} {...provided.droppableProps} ref={provided.innerRef} className='border-2 min-h-[40%] w-[40%] border-green-600 flex flex-col gap-y-1'>
             {dropzone.map((item, idx) => (
               <Draggable key={idx} draggableId={idx.toString()} index={idx}>
                 {(provided) => (
-                  <li {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
+                  <li {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps} >
                     <ActiveExerciseList  ExerciseIndex={idx} name={item.name} sets={item.sets} reps={item.reps} dispatch={setDropzone} />
                   </li>
                 )}
