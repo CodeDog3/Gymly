@@ -5,6 +5,8 @@ import GoogleProvider from "next-auth/providers/google"
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
 import bcrypt from "bcryptjs"
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "./lib/mongodb";
 
 interface Credentials {
     email?: string;
@@ -12,6 +14,7 @@ interface Credentials {
 }
 
 const options: NextAuthOptions = {
+    // adapter: MongoDBAdapter(clientPromise),
     providers: [
         GitHubProvider({
             clientId:process.env.GITHUB_ID as string,
@@ -28,6 +31,7 @@ const options: NextAuthOptions = {
             async authorize(credentials:any){
                 const {email, password} = credentials
                 try {
+                    
                     await connectMongoDB()
                     const user = await User.findOne({email})
                     if(!user){
